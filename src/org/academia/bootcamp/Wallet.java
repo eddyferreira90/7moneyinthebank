@@ -2,19 +2,15 @@ package org.academia.bootcamp;
 
 public class Wallet {
 
-    private int moneyinthewallet;
+    private double walletBalance = 500;
 
-    public Wallet (int moneyinthewallet){
-        this.moneyinthewallet = moneyinthewallet;
+
+    public double getWalletBalance() {
+        this.walletBalance = walletBalance;
+        return this.walletBalance;
     }
 
-    public void setMoneyinthewallet(int moneyinthewallet) {
-        this.moneyinthewallet = moneyinthewallet;
+    public void setWalletBalance(double walletBalance) {
+        this.walletBalance = walletBalance;
     }
-
-    public int getMoneyinthewallet() {
-        return moneyinthewallet;
-    }
-
-
 }

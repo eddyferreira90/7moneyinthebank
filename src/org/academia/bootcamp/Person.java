@@ -2,16 +2,18 @@ package org.academia.bootcamp;
 
 public class Person {
 
+    Bank bankValues = new Bank();
+    Wallet walletValues = new Wallet();
+    //Lojadecenas store = new Lojadecenas();
+    //Job income = new Job();
+
+
+    private double checkBank;
+    private double checkWallet;
     private String name;
-    private Bank bMoney;
-    private Wallet wMoney;
-    private Lojadecenas lojadecenas;
 
-
-    public Person(String name, Bank bMoney, Wallet wMoney){
+    public Person(String name){
         this.name = name;
-        this.bMoney = bMoney;
-        this.wMoney = wMoney;
 
     }
 
@@ -20,78 +22,28 @@ public class Person {
 
     }
 
-    public void checkMoneyB(){
-
-        System.out.println("Your current account balance is " + bMoney.getMoneyinthebank() + "€." + "\n");
+    public double checkBank(){
+        this.checkBank = bankValues.getBankBalance();
+        return this.checkBank;
     }
 
-    public void depositBank(int value){
-
-        bMoney.setMoneyinthebank(value);
-        System.out.println("You deposited " + value + " € in your bank account." + "\n");
-
+    public double checkWallet(){
+        this.checkWallet = walletValues.getWalletBalance();
+        return this.checkBank;
     }
-
-    public void withdrawFromBank(int value){
-
-        if(bMoney.getMoneyinthebank() < value){
-            System.out.println("Sorry, you don't have that much money in your account." + "\n");
-        }else {
-            bMoney.setMoneyinthebank(-value);
-            System.out.println("You withdrew " + value + " € from your bank account." + "\n");
+    public double add2Bank(int value){
+        checkWallet();
+        if(checkWallet < value){
+            System.out.println("I don't have enough money. This is what I have: ");
+            return checkWallet;
         }
+
+        double bankNewBalance = checkBank + value;
+        double walletNewbalance = checkWallet - value;
+        bankValues.setBankBalance(bankNewBalance);
+        walletValues.setWalletBalance(walletNewbalance);
+
+        System.out.println("You transferred " + value + "€ to your account." + "\n" + "Current balance is: ");
+        return bankNewBalance;
     }
-
-    public void trfBankToWallet(int value){
-
-        if(bMoney.getMoneyinthebank() < value){
-            System.out.println("Sorry, you don't have that much money in your account." + "\n");
-        }else {
-            withdrawFromBank(value);
-            addToWallet(value);
-            System.out.println("You transferred " + value + "€ " + "from the bank to your wallet." + "\n");
-        }
-    }
-
-    public void checkMoneyW(){
-
-        System.out.println("Your current wallet balance is " + wMoney.getMoneyinthewallet() + "€." + "\n");
-    }
-
-    public void addToWallet(int value){
-
-        wMoney.setMoneyinthewallet(value);
-        System.out.println("You added " + value + " € in your wallet." + "\n");
-    }
-
-    public void withdrawFromWallet(int value){
-
-        if(wMoney.getMoneyinthewallet() < value){
-            System.out.println("You don't have that much money in your wallet." + "\n");
-        }else {
-            wMoney.setMoneyinthewallet(-value);
-            System.out.println("You withdrew " + value + " € from your wallet." + "\n");
-        }
-    }
-
-    public void trfWalletToBank(int value){
-
-        if(wMoney.getMoneyinthewallet() < value){
-            System.out.println("You don't have that much money in your wallet." + "\n");
-        }else {
-            withdrawFromWallet(value);
-            depositBank(value);
-            System.out.println("You transferred " + value + "€ " + "from your wallet to your bank account." + "\n");
-        }
-    }
-
-    /*public void buyCena1(int ){
-
-        lojadecenas.getCena1();
-
-    }*/
-
-
-
-
 }

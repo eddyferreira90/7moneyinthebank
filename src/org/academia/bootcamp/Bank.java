@@ -2,21 +2,16 @@ package org.academia.bootcamp;
 
 public class Bank {
 
-    private int moneyinthebank;
+    private double bankBalance = 1000;
 
-    public Bank (int moneyinthebank){
-        this.moneyinthebank = moneyinthebank;
+
+
+    public double getBankBalance() {
+       this.bankBalance = bankBalance;
+       return this.bankBalance;
     }
 
-    public void setMoneyinthebank(int value) {
-        this.moneyinthebank = moneyinthebank + value;
+    public void setBankBalance(double bankBalance) {
+        this.bankBalance = bankBalance;
     }
-
-    public int getMoneyinthebank() {
-        return moneyinthebank;
-    }
-
-
-
-
 }
